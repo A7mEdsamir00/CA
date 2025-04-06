@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <link rel="stylesheet" href="ahmed.css">
+</head>
+<body>
+   <header>
+      <nav class="navbar"> <!--start navbar-->
+        <span class="hamburger-btn material-symbols-rounded">menu</span>
+        <a href="#" class="logo">
+          <img src="images/EARLY WARNING SYSTEM without background.png" alt="logo">
+          <h2>Fire detection SYSTEM</h2>
+        </a>
+      </nav>
+    </header>
+
+
+    <div class="login-container">
+        <h1>تسجيل الدخول</h1>
+        <form id="loginForm">
+            <label for="email">الإيميل:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">كلمة المرور:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">دخول</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script src="ahmed.js"></script>
+</body>
+</html>

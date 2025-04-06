@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العاشر من رمضان</title>
+    <link rel="stylesheet" href="ashar.css">
+    <style>
+        /* أنميشن الحريق للأقسام */
+        .fire-notification {
+            position: relative;
+        }
+        
+        .fire-notification::after {
+            content: "!🔥 حريق";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ff0000;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            animation: fire-alert 0.5s infinite alternate;
+            z-index: 100;
+            box-shadow: 0 0 10px #ff6600;
+        }
+        
+        .fire-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fire-effect::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(255,100,0,0.1), rgba(255,50,0,0.3));
+            animation: fire-flicker 2s infinite alternate;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes fire-alert {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        @keyframes fire-flicker {
+            0% { opacity: 0.3; background-position: 0% 50%; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.4; background-position: 100% 50%; }
+        }
+        
+        /* تأثير اهتزاز للقسم عند الحريق */
+        .fire-shake {
+            animation: shake 0.5s infinite;
+        }
+        
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="city-details">
+        <h1>العاشر من رمضان</h1>
+        
+        <!-- تفاصيل المستشفيات -->
+        <section id="hospitals">
+            <h2>المستشفيات</h2>
+            <div class="details">
+                <img src="images/photo_2025-03-17_04-50-46.jpg" alt="مستشفى العاشر من رمضان">
+                <p>مستشفى العاشر من رمضان هي واحدة من أكبر المستشفيات في المنطقة، وتقدم خدمات طبية متكاملة.</p>
+            </div>
+        </section>
+
+        <!-- تفاصيل المدارس -->
+        <section id="schools">
+            <h2>المدارس</h2>
+            <div class="details">
+                <img src="images/photo_2025-03-17_04-50-23.jpg" alt="مدرسة العاشر من رمضان">
+                <p>مدرسة العاشر من رمضان الدولية تقدم تعليمًا متميزًا لجميع المراحل الدراسية.</p>
+            </div>
+        </section>
+
+        <!-- تفاصيل المولات -->
+        <section id="malls">
+            <h2>المولات</h2>
+            <div class="details">
+                <img src="images/photo_2025-03-17_04-50-42.jpg" alt="مول العاشر من رمضان">
+                <p>مول العاشر من رمضان يوفر مجموعة متنوعة من المحلات التجارية والمطاعم.</p>
+            </div>
+        </section>
+
+        <!-- زر العودة -->
+        <button onclick="window.location.href='karim.html'">العودة للوحة التحكم</button>
+    </div>
+
+    <script>
+        // محاكاة استقبال إشارة من سينسور الحريق لكل قسم
+        function checkFireSensors() {
+            // هذه للعرض فقط - يمكن ربطها ببيانات حقيقية من السيرفر
+            const sections = {
+                'hospitals': Math.random() > 0.9, // 30% فرصة حريق
+                  // 25% فرصة حريق
+            };
+            
+            Object.keys(sections).forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                const detailsDiv = section.querySelector('.details');
+                
+                if (sections[sectionId]) {
+                    // إضافة تأثيرات الحريق
+                    section.classList.add('fire-notification');
+                    detailsDiv.classList.add('fire-effect', 'fire-shake');
+                    
+                    // تغيير لون الخلفية للتنبيه
+                    detailsDiv.style.backgroundColor = '#fff3f3';
+                    detailsDiv.style.border = '2px solid #ff0000';
+                } else {
+                    // إزالة التأثيرات إذا لم يكن هناك حريق
+                    section.classList.remove('fire-notification');
+                    detailsDiv.classList.remove('fire-effect', 'fire-shake');
+                    detailsDiv.style.backgroundColor = '';
+                    detailsDiv.style.border = '';
+                }
+            });
+            
+            // إذا كان هناك حريق في أي قسم، نشغل إنذار
+            if (Object.values(sections).includes(true)) {
+                playAlarmSound();
+                document.title = "!إنذار حريق - العاشر من رمضان";
+            } else {
+                document.title = "العاشر من رمضان";
+            }
+        }
+        
+        function playAlarmSound() {
+            // يمكن استبدال هذا بملف صوتي خاص بك
+            const alarmSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3');
+            alarmSound.play().catch(e => console.log("لا يمكن تشغيل الصوت:", e));
+        }
+        
+        // التحقق من أجهزة الاستشعار كل 3 ثوان
+        setInterval(checkFireSensors, 3000);
+        
+        // التحقق فور تحميل الصفحة
+        window.addEventListener('load', checkFireSensors);
+    </script>
+</body>
+</html>

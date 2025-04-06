@@ -1,0 +1,133 @@
+/* تنسيق عام */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-image: url('images/photo_2025-03-17_05-12-08.jpg'); /* تغيير المسار إلى الصورة الخاصة بك */
+  background-size: cover; /* لجعل الصورة تغطي الخلفية بالكامل */
+  background-position: center; /* لتوسيط الصورة */
+  background-repeat: no-repeat; /* لمنع تكرار الصورة */
+  background-attachment: fixed; /* لجعل الصورة ثابتة عند التمرير */
+}
+  
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 0 10px;
+}
+
+.navbar {
+  display: flex;
+  padding: 10px 0;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.navbar .hamburger-btn {
+  display: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.navbar .logo {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar .logo img {
+  width: 110px;
+  border-radius: 50%;
+}
+
+.navbar .logo h2 {
+  color: #ff0000;
+  font-weight: 600;
+  font-size: 1.7rem;
+}
+
+.login-container, .dashboard-container {
+  background-color: rgba(255, 0, 0, 0.8); /* إضافة شفافية للخلفية الحمراء */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgb(226, 217, 217);
+  width: 300px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+#message {
+  margin-top: 15px;
+  color: red;
+}
+
+/* تنسيق Dashboard */
+#fireLocations {
+  margin-top: 20px;
+}
+
+#fireLocations div {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  cursor: pointer; /* تغيير شكل المؤشر إلى يد */
+  font-weight: bold; /* جعل النص عريض */
+  transition: color 0.3s, text-decoration 0.3s; /* تأثيرات hover */
+}
+
+#logoutButton {
+  background-color: #dc3545;
+  margin-top: 20px;
+}
+
+#logoutButton:hover {
+  background-color: #c82333;
+}
+
+/* تأثيرات hover */
+.fire-location:hover {
+  text-decoration: underline; /* إضافة تسطير عند hover */
+}
